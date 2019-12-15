@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-//import Signup from './components/Signup';
-import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
 
@@ -9,7 +8,7 @@ function App() {
   return (
     <div style={{ background: '#ECECEC', padding: '30px' }}>
       
-      <Login />
+      <Signup />
       
     </div>
   );

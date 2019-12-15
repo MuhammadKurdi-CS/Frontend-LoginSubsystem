@@ -47,9 +47,29 @@ class RegistrationForm extends React.Component {
       if (!err) {
         //echo the values to the browser console to make sure they are correct
         console.log('Received values of form: ', values);
-      }
- });
- };  
+         //here we should send a request to our server to post the user
+    //use fetch API to post the user data 
+    fetch('http://localhost:3000/api/v1.0/user', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({values})
+        }).then(res => {
+        if(res.ok)
+            this.setState({addedSucessfully:true})
+        else
+            this.setState({
+        addedSucessfully:false,
+        errorCode: res.status
+    });
+    
+     return res.json()
+     }).then(data => this.checkResponse(data))
+        }
+    });
+};  
        
   handleEmail = ()=> {
     this.setState({responseStatus:"nothing"})
@@ -128,7 +148,7 @@ class RegistrationForm extends React.Component {
     const prefixEmail = getFieldDecorator('email')(
       <h4>@</h4>,
     );
-
+    
     const config = {
         rules: [{ type: 'object', required: true, message: 'Please select time!' }],
       };
