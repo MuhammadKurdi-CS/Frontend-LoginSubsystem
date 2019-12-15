@@ -149,6 +149,7 @@ class RegistrationForm extends React.Component {
               },
               {
                 min: 8,
+                message: 'password should be at least 6 characters long!',
               },
               {
                 type: "regexp",
