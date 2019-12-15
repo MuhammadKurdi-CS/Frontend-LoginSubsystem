@@ -60,6 +60,15 @@ class RegistrationForm extends React.Component {
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
 
+  compareToFirstPassword = (rule, value, callback) => {
+    const { form } = this.props;
+    if (value && value !== form.getFieldValue('password')) {
+      callback('Two passwords that you enter is inconsistent!');
+    } else {
+      callback();
+    }
+  };
+
   validateToNextPassword = (rule, value, callback) => {
     const { form } = this.props;
     if (value && this.state.confirmDirty) {
@@ -139,7 +148,9 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your password!',
               },
               {
-                required: true,
+                min: 8,
+              },
+              {
                 type: "regexp",
                 pattern: new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/),
                 message: 'At least 8 characters long, 1 number, 1 uppercase & lowercase',
@@ -149,6 +160,20 @@ class RegistrationForm extends React.Component {
               },
             ],
           })(<Input.Password />)}
+        </Form.Item>
+
+        <Form.Item label="Confirm Password" hasFeedback>
+          {getFieldDecorator('passwordConfirmation', {
+            rules: [
+              {
+                required: true,
+                message: 'Please confirm your password!',
+              },
+              {
+                validator: this.compareToFirstPassword,
+              },
+            ],
+          })(<Input.Password onBlur={this.handleConfirmBlur} />)}
         </Form.Item>
 
         <Form.Item label="First Name">
