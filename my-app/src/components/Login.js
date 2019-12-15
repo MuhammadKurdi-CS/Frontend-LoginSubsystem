@@ -36,12 +36,25 @@ class Login extends Component {
     }
   
 // checks on the console, if user submit details correctly or not
-  handleSubmit = event => {
-    event.preventDefault();
-    if(validateForm(this.state.formErrors)) {
-      console.log(' User has entered a Valid Form ')
+handleSubmit = event => {
+  event.preventDefault();
+  if(validateForm(this.state.formErrors)) {
+    console.log(' User has entered a Valid Form ')
+    fetch('http://localhost:3000/api/v1.0/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({"username": this.state.username,"password": this.state.password})
+    })    
+    .then(data => {
+      if(data.status === 200){
+          this.props.history.push("Home");
+          console.log('Successfully Login');
     }
-    };
+  })
+  } else {
+    console.error(' User has entered an Invalid Form ')
+    }  
+  };
 
   handleChange = event => {
     event.preventDefault();
