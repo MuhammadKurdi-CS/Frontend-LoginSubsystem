@@ -1,17 +1,19 @@
 import React from 'react';
 import './App.css';
-//import Signup from './components/Signup';
-import Login from './components/Login';
+import { Button } from 'antd'
 
 function App() {
 
-
   return (
-    <div style={{ background: '#ECECEC', padding: '30px' }}>
-      
-      <Login/>
-      
+    <div className="frontend">
+    <div className="homeContainer">
+      <div>
+        <h1>Welcome</h1>
+        <Button id="loginBt" type="primary"><a href="/login">Login</a></Button>
+        <Button id="signupBt" type="primary"><a href="/signup">Signup</a></Button>
+      </div>
     </div>
+  </div >
   );
 }
 

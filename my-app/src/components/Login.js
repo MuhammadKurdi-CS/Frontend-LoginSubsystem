@@ -6,6 +6,7 @@ https://www.w3schools.com/react/react_forms.asp
 */
 import React, {Component} from 'react';
 import './Login.css';
+import { Link } from 'react-router-dom'
 
 const validateForm = (formErrors) => {
   let valid = true;
@@ -108,6 +109,8 @@ handleSubmit = event => {
         <button type="submit" disabled={isDisabled}>Sign In</button>
         </div>
         </form>
+        <Link to="/signup">Don't have an account ? Sign up here</Link>
+
       </div>
     </div>
   );

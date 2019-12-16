@@ -3,3 +3,36 @@
 .App {
   text-align: center;
 }
+
+.frontend {
+  height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333fac;
+
+}
+
+.homeContainer {
+  display: inline-block;
+  margin: auto;
+  border: 1px solid #dce0e6;
+  border-radius: 25px;
+  padding: 3%;
+  background-color:#edf0f5;
+  box-shadow: 0px 10px 50px #555;
+  background-color: #5c946a;
+
+}
+
+#loginBt {
+  margin-right: 20px;
+  margin-top: 40px;
+}
+
+h1 {
+  color: #333333;
+  font-family: Tahoma, Geneva, sans-serif;
+}

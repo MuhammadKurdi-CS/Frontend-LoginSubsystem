@@ -3,17 +3,19 @@
     height: 100%;
     text-align: center;
     vertical-align: auto;
+    background-color: #333fac;
+
 }
 
 .signupContainer {
-    width: 30%;
+    width: 400px;
     height: 50%;
     display: inline-block;
     margin: auto;
     border: 1px solid #dce0e6;
     border-radius: 25px;
     padding: 3%;
-    background-color:#edf0f5;
+    background-color: #5c946a;
 }
 
 #usernameInput {

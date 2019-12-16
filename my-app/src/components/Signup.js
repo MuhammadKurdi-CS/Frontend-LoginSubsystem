@@ -8,6 +8,8 @@ import {
   Button,
   DatePicker
 } from 'antd';
+import { Link } from 'react-router-dom'
+
 
 class RegistrationForm extends React.Component {
 
@@ -154,6 +156,9 @@ class RegistrationForm extends React.Component {
       };
 
     return (
+      <div className="signupPage">
+                <div className="signupContainer">
+                    <div>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="Username">
           {getFieldDecorator('username', {
@@ -169,7 +174,7 @@ class RegistrationForm extends React.Component {
               },
               {
                 min: 8,
-                message: 'password should be at least 6 characters long!',
+                message: 'password should be at least 8 characters long!',
               },
               {
                 type: "regexp",
@@ -183,7 +188,7 @@ class RegistrationForm extends React.Component {
           })(<Input.Password />)}
         </Form.Item>
 
-        <Form.Item label="Confirm Password" hasFeedback>
+        <Form.Item label="Repeat Pass" hasFeedback>
           {getFieldDecorator('passwordConfirmation', {
             rules: [
               {
@@ -262,7 +267,13 @@ class RegistrationForm extends React.Component {
         </Form.Item>
         {this.state.showSuccess ? <Alert message="account created successfully" type="success" /> :null}
         {this.state.showError ? <Alert message={this.state.errorMessage} type="error" /> :null}
+
       </Form>
+      <Link to="/login">Already have an account ? Login here</Link>
+
+      </div>
+      </div>
+      </div>
     );
   }
 }
